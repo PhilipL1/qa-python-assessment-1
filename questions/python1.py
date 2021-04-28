@@ -27,16 +27,28 @@
 
 	# <EXAMPLES>
 
-	# one("hi","hello") → "hello"
-	# one("three", "two") → "three"
-	# one("three", "hello") → "three hello"
+	# one("hi","hello") -> "hello"
+	# one("three", "two") -> "three"
+	# one("three", "hello") -> "three hello"
 
 	# <HINT>
 
 	# What was the name of the function we have seen to check the length of a container?  Use your CLI to access the Python documentation and get help(len).
 
-def one(input1, input2):
-	return ""
+def one(input1,input2):
+	count1 =0
+	count2 =0
+	for i in input1:
+		count1 = count1 + 1
+	for j in input2:
+		count2 = count2 +1
+	if (count1 > count2):
+		return input1
+	elif (count1==count2):
+		return input1 + " " + input2
+	else:
+		return input2	
+print (one("hi","hello"))
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 
@@ -50,17 +62,25 @@ def one(input1, input2):
 	    
     # <EXAMPLES>
 
-	# two(3) → "fizz"
-	# two(10) → "buzz"
-	# two(15) → "fizzbuzz"
-	# two(8) → "null"
+	# two(3) -> "fizz"
+	# two(10) -> "buzz"
+	# two(15) -> "fizzbuzz"
+	# two(8) -> "null"
 
 	# <HINT>
 
 	# No hints for this question
 
 def two(arg1):
-	return "null"
+	if(arg1%3==0 and arg1%5==0):
+		return "fizzbuzz"
+	elif (arg1%3==0):
+		return "fizz"
+	elif(arg1%5==0):
+		return "buzz"
+	else : 
+		return "null"
+print(two(15))
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 
@@ -71,16 +91,21 @@ def two(arg1):
 
 	# <EXAMPLES>
 
-    # three("Hello") → 2
-    # three("hEelLoooO") → 6
+    # three("Hello") -> 2
+    # three("hEelLoooO") -> 6
 
 	# <HINTS>
 
 	# How do we ignore case in a String? help(str) may offer some insight.
 
 def three(input):
-    return 0
-
+	count =0 
+	vowel=set("aeiou")
+	for a in input.lower():
+		if a in vowel:
+			count+=1
+	return count
+print(three("hEelLoooO"))
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 
 	# <QUESTION 4>
@@ -91,10 +116,10 @@ def three(input):
 
 	# <EXAMPLES>
 
-    # four("ceiling") → True
-    # four("believe") → True
-    # four("glacier") → False
-    # four("height") → False
+    # four("ceiling") -> True
+    # four("believe") -> True
+    # four("glacier") -> False
+    # four("height") -> False
 
 	# <HINT>
 
@@ -102,7 +127,11 @@ def three(input):
 
 
 def four(input):
-    return False
+	return False
+#	for char in input:
+#		if char == "cie":
+#		elif char == "ei":
+# return False
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 
@@ -113,16 +142,21 @@ def four(input):
 
 	# <EXAMPLES>
 
-	# five(1) → 1
-	# five(4) → 24
-	# five(8) → 40320
+	# five(1) -> 1
+	# five(4) -> 24
+	# five(8) -> 40320
 
 	# <HINT>
 
 	# You may need to create a list of numbers from 0 to i, take a look at help(range).
 
 def five(input):
-	return 1
+	count =1
+	l=[]
+	for i in range(1, input+1):
+		count= count*i
+	return count
+print(five(8))
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 
@@ -135,9 +169,9 @@ def five(input):
     
     # <EXAMPLES>
 
-	# six("The",2,'h') → True
-	# six("AAbb",1,'b') → False
-	# six("Hi-There",10,'e') → False
+	# six("The",2,'h') -> True
+	# six("AAbb",1,'b') -> False
+	# six("Hi-There",10,'e') -> False
 
 	# <HINT>
 
@@ -158,16 +192,20 @@ def six(string, int, char):
     
     # <EXAMPLES>
 
-	# seven("This is a Sentence","s") → 4
-	# seven("This is a Sentence","S") → 8
-	# seven("Fridge for sale","z") → -1
+	# seven("This is a Sentence","s") -> 4
+	# seven("This is a Sentence","S") -> 8
+	# seven("Fridge for sale","z") -> -1
 
 	# <HINT>
 
 	# Take a look at the documentation for Strings, List and range.
 
 def seven(inputString, char):
-	return -1
+	x= inputString.find(char)
+	return x
+
+print(seven("This is a Sentence","s"))
+print(seven("This is a Sentence","S"))
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 
@@ -185,17 +223,22 @@ def seven(inputString, char):
 	 
     # <EXAMPLES>
 
-	# eight("55 72 86") → 14
-	# eight("15 72 80 164") → 11
-	# eight("555 72 86 45 10") → 15
+	# eight("55 72 86") -> 14
+	# eight("15 72 80 164") -> 11
+	# eight("555 72 86 45 10") -> 15
 
 	# <HINT>
 
 	# help(int) for working with numbers and help(str) for working with Strings.
-
+ #then add each digit of each number to get a final value for each number
 def eight(arg1):
-	return 0
-
+	count = 0
+	x=arg1.split(" ")
+	for i in x:
+		count = count + int(i) 
+	
+	return count 
+print( eight("55 72 86"))
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 
 	# <QUESTION 9>
@@ -208,11 +251,11 @@ def eight(arg1):
     
     # <EXAMPLES>
 
-	# nine("bertclivebert") → "clive"
-	# nine("xxbertfridgebertyy") → "fridge"
-	# nine("xxBertfridgebERtyy") → "fridge"
-	# nine("xxbertyy") → ""
-	# nine("xxbeRTyy") → ""
+	# nine("bertclivebert") -> "clive"
+	# nine("xxbertfridgebertyy") -> "fridge"
+	# nine("xxBertfridgebERtyy") -> "fridge"
+	# nine("xxbertyy") -> ""
+	# nine("xxbeRTyy") -> ""
 
 	# <HINT>
 
@@ -239,10 +282,10 @@ def nine(input):
     
     # <EXAMPLES>
     
-    # ten("Jeff,random.py,False,1445") → ["Jeff"]
-	# ten("Bert,numberGen.py,True,1447,Bert,integers.py,True,1318,Jeff,floats.py,False,1445") → ["Jeff"]
-	# ten("Bert,boolean.py,False,1447,Bert,conditions.py,False,1318,Jeff,loops.py,False,1445") → ["Bert","Jeff"]
-    # ten("Bert,prime.py,True,1447,Bert,ISBN.py,False,1318,Jeff,OOP.py,False,1445") → ["Bert","Jeff"]
+    # ten("Jeff,random.py,False,1445") -> ["Jeff"]
+	# ten("Bert,numberGen.py,True,1447,Bert,integers.py,True,1318,Jeff,floats.py,False,1445") -> ["Jeff"]
+	# ten("Bert,boolean.py,False,1447,Bert,conditions.py,False,1318,Jeff,loops.py,False,1445") -> ["Bert","Jeff"]
+    # ten("Bert,prime.py,True,1447,Bert,ISBN.py,False,1318,Jeff,OOP.py,False,1445") -> ["Bert","Jeff"]
     
 	# <HINT>
 
