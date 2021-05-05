@@ -127,11 +127,16 @@ print(three("hEelLoooO"))
 
 
 def four(input):
-	return False
-#	for char in input:
-#		if char == "cie":
-#		elif char == "ei":
-# return False
+		if input.__contains__(Union[input, "ie"]):
+		return True 
+	elif input.__contains__(Union[input, "ei"]):
+		return False
+	else :
+		return False
+	
+	
+print(four("ceiling"))	
+
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 
